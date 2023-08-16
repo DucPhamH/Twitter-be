@@ -36,6 +36,7 @@ class UsersService {
         password: hashPassword(payload.password)
       })
     )
+    console.log(result)
     const user_id = result.insertedId.toString()
     const [access_token, refresh_token] = await Promise.all([
       this.signAccessToken(user_id),
@@ -52,7 +53,7 @@ class UsersService {
   }
   async checkEmailExist(email: string) {
     const user = await databaseService.users.findOne({ email })
-    console.log(user)
+    //  console.log(user)
     return Boolean(user)
   }
 }

@@ -8,6 +8,24 @@ type ErrorsType = Record<
     [key: string]: any
   }
 >
+
+// export interface error {
+//   message: string
+//   status: number
+// }
+// export interface error2 {
+//   message: string
+//   status: number
+//   errors: ErrorsType
+// }
+
+// export function Error1(obj: error) {
+//   return obj
+// }
+
+// export function Error2(obj: error2) {
+//   return obj
+// }
 export class ErrorWithStatus {
   message: string
   status: number

@@ -14,6 +14,10 @@ export interface ForgotPasswordReqBody {
   email: string
 }
 
+export interface VerifyForgotPasswordReqBody {
+  forgot_password_token: string
+}
+
 export interface RegisterReqBody {
   name: string
   email: string

@@ -11,6 +11,8 @@ import { capitalize } from 'lodash'
 import { JsonWebTokenError } from 'jsonwebtoken'
 import { Request, Response, NextFunction } from 'express'
 import { ObjectId } from 'mongodb'
+import { TokenPayload } from '~/models/requests/User.requests'
+import { UserVerifyStatus } from '~/constants/enums'
 
 const passwordSchema: ParamSchema = {
   notEmpty: {
@@ -380,3 +382,16 @@ export const resetPasswordValidator = validate(
     ['body']
   )
 )
+
+export const verifiedUserValidator = (req: Request, res: Response, next: NextFunction) => {
+  const { verify } = req.decoded_authorization as TokenPayload
+  if (verify !== UserVerifyStatus.Verified) {
+    return next(
+      new ErrorWithStatus({
+        message: USERS_MESSAGES.USER_NOT_VERIFIED,
+        status: HTTP_STATUS.FORBIDDEN
+      })
+    )
+  }
+  next()
+}

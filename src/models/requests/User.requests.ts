@@ -35,6 +35,10 @@ export interface TokenPayload extends JwtPayload {
   token_type: TokenType
 }
 
+export interface GetProfileReqParams {
+  username: string
+}
+
 export interface UpdateMeReqBody {
   name?: string
   date_of_birth?: string

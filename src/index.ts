@@ -4,8 +4,10 @@ import databaseService from './services/database.services'
 import bodyParser from 'body-parser'
 import { defaultErrorHandler } from './middlewares/error.middlewares'
 import mediasRouter from './routes/medias.routes'
+import { initFolder } from './utils/file'
 const app: Express = express()
 const port = 4000
+initFolder()
 
 databaseService.connect()
 app.use(express.json())

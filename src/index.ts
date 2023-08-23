@@ -3,6 +3,7 @@ import usersRouter from '~/routes/users.routes'
 import databaseService from './services/database.services'
 import bodyParser from 'body-parser'
 import { defaultErrorHandler } from './middlewares/error.middlewares'
+import mediasRouter from './routes/medias.routes'
 const app: Express = express()
 const port = 4000
 
@@ -16,6 +17,8 @@ app.get('/', (req: Request, res: Response) => {
 })
 
 app.use('/user', usersRouter)
+app.use('/medias', mediasRouter)
+
 app.use(defaultErrorHandler)
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

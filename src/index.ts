@@ -5,11 +5,13 @@ import bodyParser from 'body-parser'
 import { defaultErrorHandler } from './middlewares/error.middlewares'
 import mediasRouter from './routes/medias.routes'
 import { initFolder } from './utils/file'
+import { config } from 'dotenv'
+config()
+databaseService.connect()
 const app: Express = express()
-const port = 4000
+const port = process.env.PORT || 4000
 initFolder()
 
-databaseService.connect()
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

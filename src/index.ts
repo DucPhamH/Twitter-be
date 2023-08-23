@@ -6,6 +6,7 @@ import { defaultErrorHandler } from './middlewares/error.middlewares'
 import mediasRouter from './routes/medias.routes'
 import { initFolder } from './utils/file'
 import { config } from 'dotenv'
+import { UPLOAD_DIR } from './constants/dir'
 config()
 databaseService.connect()
 const app: Express = express()
@@ -22,6 +23,8 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use('/user', usersRouter)
 app.use('/medias', mediasRouter)
+
+app.use('/static', express.static(UPLOAD_DIR))
 
 app.use(defaultErrorHandler)
 app.listen(port, () => {

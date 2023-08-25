@@ -8,9 +8,11 @@ import { initFolder } from './utils/file'
 import { config } from 'dotenv'
 import { UPLOAD_IMAGE_DIR, UPLOAD_VIDEO_DIR } from '~/constants/dir'
 import staticRouter from './routes/static.routes'
+import cors from 'cors'
 config()
 databaseService.connect()
 const app: Express = express()
+app.use(cors())
 const port = process.env.PORT || 4000
 initFolder()
 

@@ -23,8 +23,12 @@ class Queue {
   }
   async enqueue(item: string) {
     this.items.push(item)
+
+    console.log('item', item)
+
     // item = /home/duy/Downloads/12312312/1231231221.mp4
-    const idName = getNameFromFullname(item.split('/').pop() as string)
+    const idName = getNameFromFullname(item.split('\\').pop() as string)
+
     await databaseService.videoStatus.insertOne(
       new VideoStatus({
         name: idName,
@@ -38,7 +42,7 @@ class Queue {
     if (this.items.length > 0) {
       this.encoding = true
       const videoPath = this.items[0]
-      const idName = getNameFromFullname(videoPath.split('/').pop() as string)
+      const idName = getNameFromFullname(videoPath.split('\\').pop() as string)
       await databaseService.videoStatus.updateOne(
         {
           name: idName

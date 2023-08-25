@@ -26,7 +26,7 @@ app.use('/user', usersRouter)
 app.use('/medias', mediasRouter)
 
 app.use('/static', staticRouter)
-app.use('/static/video', express.static(UPLOAD_VIDEO_DIR))
+//app.use('/static/video', express.static(UPLOAD_VIDEO_DIR))
 
 app.use(defaultErrorHandler)
 app.listen(port, () => {

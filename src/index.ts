@@ -12,7 +12,9 @@ import cors from 'cors'
 config()
 const app: Express = express()
 const port = process.env.PORT || 4000
-databaseService.connect()
+databaseService.connect().then(() => {
+  databaseService.indexUsers()
+})
 
 app.use(cors())
 

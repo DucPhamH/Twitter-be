@@ -112,6 +112,7 @@ class MediasService {
       files.map(async (file) => {
         const newName = getNameFromFullname(file.newFilename)
         const newPath = path.resolve(UPLOAD_IMAGE_DIR, `${newName}.jpg`)
+        //   console.log(path.extname(newPath))
         await sharp(file.filepath).jpeg().toFile(newPath)
         fs.unlinkSync(file.filepath)
         return {

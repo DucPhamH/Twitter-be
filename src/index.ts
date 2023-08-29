@@ -13,6 +13,7 @@ import tweetsRouter from '~/routes/tweets.routes'
 import bookmarksRouter from '~/routes/bookmarks.routes'
 import likesRouter from '~/routes/likes.routes'
 config()
+// import '~/utils/fake'
 
 const app: Express = express()
 const port = process.env.PORT || 4000

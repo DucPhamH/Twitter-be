@@ -12,6 +12,7 @@ import cors from 'cors'
 import tweetsRouter from '~/routes/tweets.routes'
 import bookmarksRouter from '~/routes/bookmarks.routes'
 import likesRouter from '~/routes/likes.routes'
+import searchRouter from './routes/search.routes'
 config()
 // import '~/utils/fake'
 
@@ -40,6 +41,7 @@ app.use('/user', usersRouter)
 app.use('/medias', mediasRouter)
 app.use('/tweets', tweetsRouter)
 app.use('/bookmarks', bookmarksRouter)
+app.use('/search', searchRouter)
 app.use('/likes', likesRouter)
 
 app.use('/static', staticRouter)
